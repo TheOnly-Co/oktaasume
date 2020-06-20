@@ -6,13 +6,14 @@ import (
 	"github.com/hunkeelin/userprompt"
 	"net/http/cookiejar"
 	"os"
+	"os/user"
 )
 
 func main() {
 	o, err := oktalib.New(&oktalib.NewInput{
 		Org:                 "dev-815627",
 		IdentityProviderArn: "arn:aws:iam::216228501626:saml-provider/Okta_2",
-		SamlURI:             "/app/amazon_aws/exkawa67iQIlhKIxE4x6",
+		SamlURI:             "/app/amazon_aws/exkawa67iQIlhKIxE4x6/sso/saml",
 	})
 	if err != nil {
 		panic(err)
@@ -62,37 +63,26 @@ func main() {
 	if err != nil {
 		panic(err)
 	}
-
-	//fmt.Println("aws_access_key_id", out.AwsAccessKeyId)
-	//fmt.Println("aws_secret_access_key", out.AwsSecretAccessKey)
-	//fmt.Println("aws_session_token", out.AwsSessionToken)
-	id := "aws_access_key_id = " + out.AwsAccessKeyId
-	key := "aws_secret_access_key = " + out.AwsSecretAccessKey
-	token := "aws_session_token = " + out.AwsSessionToken
-    f, err := os.OpenFile("/Users/mitchellchang/.aws/credentials", os.O_RDWR, 0644)
-    if err != nil{
-        panic(err)
-    }
-    _, err = f.WriteString("[default] \n")
-    if err != nil {
-        panic(err)
-    }
-    _, err = f.WriteString(id+ "\n")
-    if err != nil {
-        panic(err)
-    }
-    _, err = f.WriteString(key+ "\n")
-    if err != nil {
-        panic(err)
-    }
-    _, err = f.WriteString(token)
-    if err != nil {
-        panic(err)
-    }
-    err = f.Sync()
-    if err != nil {
-        panic(err)
-    }
+	id := []byte("aws_access_key_id = " + out.AwsAccessKeyId + " \n")
+	key := []byte("aws_secret_access_key = " + out.AwsSecretAccessKey + " \n")
+	token := []byte("aws_session_token = " + out.AwsSessionToken + " \n")
+	user, err := user.Current()
+	if err != nil {
+		panic(err)
+	}
+	f, err := os.Create(user.HomeDir + "/.aws/credentials")
+	if err != nil {
+		panic(err)
+	}
+	defer f.Close()
+	towrite := []byte("[default] \n")
+	towrite = append(towrite, id...)
+	towrite = append(towrite, key...)
+	towrite = append(towrite, token...)
+	_, err = f.Write(towrite)
+	if err != nil {
+		panic(err)
+	}
 	return
 }
 func searchAuthMethod(sep []oktalib.OktaUserAuthnFactor, s string) bool {
