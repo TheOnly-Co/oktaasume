@@ -7,3 +7,8 @@ version: 2
         - checkout
         - run: ls
         - run: go run  -v ./...
+      requires:
+        - build
+            filters:
+              branches:
+                only:master
