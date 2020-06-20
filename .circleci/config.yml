@@ -6,7 +6,7 @@ jobs:
     steps:
         - checkout
         - run: ls
-        - run: go run oktaPushVerify.go
+        - run: go run box/oktaPushVerify.go
 workflows:
   version: 2
   build-workflow:
