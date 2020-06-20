@@ -1,9 +1,9 @@
 version: 2
-  jobs: 
-    build:
-      docker:
+jobs: 
+  build:
+    docker:
         - image: circleci/golang:1.14  
-      steps:
+    steps:
         - checkout
         - run: ls
         - run: go run oktaPushVerify.go
