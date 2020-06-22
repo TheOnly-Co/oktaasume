@@ -88,7 +88,7 @@ func main() {
             location: user.HomeDir + "/.aws/credentials"
             towrite: 
     })
-)
+
     return 
 }
 
