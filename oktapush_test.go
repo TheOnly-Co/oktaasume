@@ -6,6 +6,5 @@ import (
 )
 
 func TestCredential (t *testing.T) {
-    oktaPush()
-            
+    writeCredToFile()
 }
