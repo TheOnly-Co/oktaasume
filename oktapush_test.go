@@ -5,7 +5,7 @@ import (
     "testing"
 )
 
-func testcredential (t *testing.T) {
+func TestCredential (t *testing.T) {
     main()
-    panic(fmt.Errorf("there is an error"))        
+            
 }
