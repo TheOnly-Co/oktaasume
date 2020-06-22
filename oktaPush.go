@@ -86,7 +86,7 @@ func main() {
 	}
     _, err := writeCredToFile(writeCredToFileInput{
             location: user.HomeDir + "/.aws/credentials",
-            towrite: 
+            towrite: "", 
     })
     if err != nil {
         panic(err)
