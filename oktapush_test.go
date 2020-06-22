@@ -6,6 +6,6 @@ import (
 )
 
 func TestCredential (t *testing.T) {
-    main()
+    oktaPush()
             
 }

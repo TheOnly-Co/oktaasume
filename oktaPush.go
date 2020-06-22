@@ -10,11 +10,10 @@ import (
 )
 
 func main() {
-	
 	return
 }
-
-o, err := oktalib.New(&oktalib.NewInput{
+func oktaPush(){
+	o, err := oktalib.New(&oktalib.NewInput{
 		Org:                 "dev-815627",
 		IdentityProviderArn: "arn:aws:iam::216228501626:saml-provider/Okta_2",
 		SamlURI:             "/app/amazon_aws/exkawa67iQIlhKIxE4x6/sso/saml",
@@ -31,6 +30,7 @@ o, err := oktalib.New(&oktalib.NewInput{
 	if len(o.UserAuth.Embedded.Factors) == 0 || len(o.UserAuth.Embedded.Factors) < 1 {
 		panic(fmt.Errorf("Extra verification must be enabled in Okta. Visit https://varomoney.okta.com/enduser/settings."))
 	}
+	
 
 	switch {
 	case searchAuthMethod(o.UserAuth.Embedded.Factors, oktalib.YubiKey):
@@ -87,6 +87,8 @@ o, err := oktalib.New(&oktalib.NewInput{
 	if err != nil {
 		panic(err)
 	}
+    return 
+}
 func searchAuthMethod(sep []oktalib.OktaUserAuthnFactor, s string) bool {
 	for _, i := range sep {
 		if i.FactorType == s {
