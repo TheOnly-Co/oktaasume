@@ -86,6 +86,15 @@ func main() {
 	}
     return 
 }
+
+type writeCredToFileInput struct {
+    location string
+    towrite []byte
+}
+
+func writeCredToFile (i writeCredTpFileInput) error {
+
+}
 func searchAuthMethod(sep []oktalib.OktaUserAuthnFactor, s string) bool {
 	for _, i := range sep {
 		if i.FactorType == s {
