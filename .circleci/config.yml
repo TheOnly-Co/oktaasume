@@ -6,6 +6,3 @@ jobs:
     steps:
         - checkout
         - run: ls
-        - run: go test github.com/hunkeelin/oktalib
-        - run: go test github.com/hunkeelin/userprompt
-        - run: go test -v 

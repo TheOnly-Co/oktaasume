@@ -10,9 +10,6 @@ import (
 )
 
 func main() {
-	return
-}
-func oktaPush(){
 	o, err := oktalib.New(&oktalib.NewInput{
 		Org:                 "dev-815627",
 		IdentityProviderArn: "arn:aws:iam::216228501626:saml-provider/Okta_2",
