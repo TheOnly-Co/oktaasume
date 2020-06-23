@@ -71,22 +71,17 @@ user, err := user.Current()
 if err != nil {
     panic(err)
 }
-f, err := os.Create(user.HomeDir + "/.aws/credentials")
-if err != nil {
-    panic(err)
-}
-defer f.Close()
     towrite := []byte("[default] \n")
     towrite = append(towrite, id...)
     towrite = append(towrite, key...)
     towrite = append(towrite, token...)
-_, err = f.Write(towrite)
+    _, err = f.Write(towrite)
     if err != nil {
         panic(err)
     }
 
-err = writeCredToFile(writeCredToFileInput{
-location: "Users/mitchellchang/.aws/credentials",
+err = writeCredToFile(&writeCredToFileInput{
+location: user.HomeDir + "/.aws/credentials",
 towrite: towrite,   
 })
 return 
@@ -97,37 +92,19 @@ type writeCredToFileInput struct {
     towrite []byte
 }
 
-func writeCredToFile(i writeCredToFileInput) error {
-    o, err := oktalib.New(&oktalib.NewInput{
-Org:                 "dev-815627",
-IdentityProviderArn: "arn:aws:iam::216228501626:saml-provider/Okta_2",
-SamlURI:             "/app/amazon_aws/exkawa67iQIlhKIxE4x6/sso/saml",
-})
-if err != nil {
-    panic(err)
+func writeCredToFile(i* writeCredToFileInput) error {
+     f, err := os.Create(i.location)
+     if err != nil {
+        return err
+     }  
+     defer f.Close()
+     _, err = f.Write(i.towrite)
+     if err {
+        panic(err) 
+     }   
+    return nil
 }
-out, err := o.GetAwsCredentials(oktalib.GetAwsCredentialsInput{
-RoleArn:    "arn:aws:iam::216228501626:role/devops-admin-role",
-Expiration: 28800,
-})
-if err != nil {
-    panic(err)
-}
-    id := []byte("aws_access_key_id = " + out.AwsAccessKeyId + " \n")
-    key := []byte("aws_secret_access_key = " + out.AwsSecretAccessKey + " \n")
-    token := []byte("aws_session_token = " + out.AwsSessionToken + " \n")
-    i.towrite := []byte("[default] \n")
-    i.towrite = append(i.towrite, id...)
-    i.towrite = append(i.towrite, key...)
-    i.towrite = append(i.towrite, token...)
-    if i.location {
-        if i.towrite {
-            return error 
-        }   
 
-    }
-
-}
 func searchAuthMethod(sep []oktalib.OktaUserAuthnFactor, s string) bool {
     for _, i := range sep {
         if i.FactorType == s {
