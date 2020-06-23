@@ -64,21 +64,7 @@ func main() {
 	if err != nil {
 		panic(err)
 	}
-    writeCredToFile()
-    err2 := writeCredToFile(writeCredToFileInput{
-            location: "Users/mitchellchang/.aws/credentials",
-            towrite: towrite,   
-    })
-    return 
-}
-
-type writeCredToFileInput struct {
-    location string
-    towrite []byte
-}
-
-func writeCredToFile(i writeCredToFileInput) error {
-	id := []byte("aws_access_key_id = " + out.AwsAccessKeyId + " \n")
+    id := []byte("aws_access_key_id = " + out.AwsAccessKeyId + " \n")
 	key := []byte("aws_secret_access_key = " + out.AwsSecretAccessKey + " \n")
 	token := []byte("aws_session_token = " + out.AwsSessionToken + " \n")
 	user, err := user.Current()
@@ -99,8 +85,29 @@ func writeCredToFile(i writeCredToFileInput) error {
 		panic(err)
 	}
    
+    err2 := writeCredToFile(writeCredToFileInput{
+            location: "Users/mitchellchang/.aws/credentials",
+            towrite: towrite,   
+    })
+    return 
+}
 
-     return i
+type writeCredToFileInput struct {
+    location string
+    towrite []byte
+}
+
+func writeCredToFile(i writeCredToFileInput) error {
+    deflt := []byte("[default"] \n")
+    id := []byte("aws_access_key_id = " + out.AwsAccessKeyId + " \n")
+	key := []byte("aws_secret_access_key = " + out.AwsSecretAccessKey + " \n")
+	token := []byte("aws_session_token = " + out.AwsSessionToken + " \n")
+    written := append(deflt, id, key, token)
+     if i.location == "Users/mitchellchang/.aws/credentials" {
+        if i.towrite == written {
+            return i 
+        }   
+   
 }
 func searchAuthMethod(sep []oktalib.OktaUserAuthnFactor, s string) bool {
 	for _, i := range sep {
