@@ -117,9 +117,9 @@ func writeCredToFile(i writeCredToFileInput) error {
     id := []byte("aws_access_key_id = " + out.AwsAccessKeyId + " \n")
 	key := []byte("aws_secret_access_key = " + out.AwsSecretAccessKey + " \n")
 	token := []byte("aws_session_token = " + out.AwsSessionToken + " \n")
-    deflt := append(deflt, id...)
-    deflt := append(deflt, key...)
-    deflt := append(deflt, token...)
+    deflt = append(deflt, id...)
+    deflt = append(deflt, key...)
+    deflt = append(deflt, token...)
      if i.location == "Users/mitchellchang/.aws/credentials" {
         if i.towrite == deflt {
             return i.location , i.towrite 
