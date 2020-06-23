@@ -75,7 +75,6 @@ if err != nil {
     towrite = append(towrite, id...)
     towrite = append(towrite, key...)
     towrite = append(towrite, token...)
-    _, err = f.Write(towrite)
     if err != nil {
         panic(err)
     }
