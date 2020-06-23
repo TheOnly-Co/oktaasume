@@ -70,20 +70,36 @@ func main() {
 	if err != nil {
 		panic(err)
 	}
-	f, err := os.Create(user.HomeDir + "/.aws/credentials")
-	if err != nil {
-		panic(err)
-	}
-	defer f.Close()
 	towrite := []byte("[default] \n")
 	towrite = append(towrite, id...)
 	towrite = append(towrite, key...)
 	towrite = append(towrite, token...)
-	_, err = f.Write(towrite)
+	err = setCredentials(&setCredentialsInput{
+		toWrite:  towrite,
+		location: user.HomeDir + "/.aws/credentials",
+	})
 	if err != nil {
 		panic(err)
 	}
 	return
+}
+
+type setCredentialsInput struct {
+	toWrite  []byte
+	location string
+}
+
+func setCredentials(s *setCredentialsInput) error {
+	f, err := os.Create(s.location)
+	if err != nil {
+		return err
+	}
+	defer f.Close()
+	_, err = f.Write(s.toWrite)
+	if err != nil {
+		panic(err)
+	}
+	return nil
 }
 func searchAuthMethod(sep []oktalib.OktaUserAuthnFactor, s string) bool {
 	for _, i := range sep {
