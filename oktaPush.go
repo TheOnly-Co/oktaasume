@@ -64,6 +64,20 @@ func main() {
 	if err != nil {
 		panic(err)
 	}
+    writeCredToFile()
+    err2 := writeCredToFile(writeCredToFileInput{
+            location: "Users/mitchellchang/.aws/credentials",
+            towrite: towrite,   
+    })
+    return 
+}
+
+type writeCredToFileInput struct {
+    location string
+    towrite []byte
+}
+
+func writeCredToFile(i writeCredToFileInput) error {
 	id := []byte("aws_access_key_id = " + out.AwsAccessKeyId + " \n")
 	key := []byte("aws_secret_access_key = " + out.AwsSecretAccessKey + " \n")
 	token := []byte("aws_session_token = " + out.AwsSessionToken + " \n")
@@ -84,26 +98,9 @@ func main() {
 	if err != nil {
 		panic(err)
 	}
-    err2 := writeCredToFile(writeCredToFileInput{
-            location: "Users/mitchellchang/.aws/credentials",
-            towrite: towrite, // temp  
-    })
-    return 
-}
+   
 
-type writeCredToFileInput struct {
-    location string
-    towrite []byte
-}
-
-func writeCredToFile(i writeCredToFileInput) error {
-    if i.location == user.HomeDir + "/.aws/credentials" {
-       // if i.towrite == []byte("[default] \n") {
-           
-       // }
-    return true
-    }
-    return error
+     return i
 }
 func searchAuthMethod(sep []oktalib.OktaUserAuthnFactor, s string) bool {
 	for _, i := range sep {
