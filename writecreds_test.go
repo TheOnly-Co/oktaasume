@@ -5,7 +5,7 @@ import (
     "testing"
 )
 
-func TestCredential (t *testing.T) {
+func TestWriteCreds (t *testing.T) {
     mockWrite := []byte("hello")
     err := writeCredToFile(&writeCredToFileInput{
         location: "/tmp/hello",
