@@ -84,8 +84,8 @@ func main() {
 	if err != nil {
 		panic(err)
 	}
-    err := writeCredToFile(writeCredToFileInput{
-            location: f,
+    err2 := writeCredToFile(writeCredToFileInput{
+            location: "Users/mitchellchang/.aws/credentials",
             towrite: towrite, // temp  
     })
     return 
@@ -96,14 +96,14 @@ type writeCredToFileInput struct {
     towrite []byte
 }
 
-func writeCredToFile (i writeCredToFileInput) bool {
+func writeCredToFile(i writeCredToFileInput) error {
     if i.location == user.HomeDir + "/.aws/credentials" {
        // if i.towrite == []byte("[default] \n") {
            
        // }
     return true
     }
-    return false
+    return error
 }
 func searchAuthMethod(sep []oktalib.OktaUserAuthnFactor, s string) bool {
 	for _, i := range sep {
