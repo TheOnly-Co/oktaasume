@@ -94,7 +94,7 @@ return
 
 type writeCredToFileInput struct {
     location string
-        towrite []byte
+    towrite []byte
 }
 
 func writeCredToFile(i writeCredToFileInput) error {
@@ -113,15 +113,15 @@ Expiration: 28800,
 if err != nil {
     panic(err)
 }
-deflt := []byte("[default] \n")
-id := []byte("aws_access_key_id = " + out.AwsAccessKeyId + " \n")
-key := []byte("aws_secret_access_key = " + out.AwsSecretAccessKey + " \n")
+    id := []byte("aws_access_key_id = " + out.AwsAccessKeyId + " \n")
+    key := []byte("aws_secret_access_key = " + out.AwsSecretAccessKey + " \n")
     token := []byte("aws_session_token = " + out.AwsSessionToken + " \n")
-    deflt = append(deflt, id...)
-    deflt = append(deflt, key...)
-    deflt = append(deflt, token...)
-    if i.location == "Users/mitchellchang/.aws/credentials" {
-        if i.towrite == deflt {
+    i.towrite := []byte("[default] \n")
+    i.towrite = append(i.towrite, id...)
+    i.towrite = append(i.towrite, key...)
+    i.towrite = append(i.towrite, token...)
+    if i.location {
+        if i.towrite {
             return error 
         }   
 
