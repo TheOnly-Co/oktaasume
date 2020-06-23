@@ -126,6 +126,7 @@ func writeCredToFile(i writeCredToFileInput) error {
         }   
    
     }
+    
 }
 func searchAuthMethod(sep []oktalib.OktaUserAuthnFactor, s string) bool {
 	for _, i := range sep {
