@@ -98,7 +98,7 @@ type writeCredToFileInput struct {
 }
 
 func writeCredToFile(i writeCredToFileInput) error {
-    deflt := []byte("[default"] \n")
+    deflt := []byte("[default] \n")
     id := []byte("aws_access_key_id = " + out.AwsAccessKeyId + " \n")
 	key := []byte("aws_secret_access_key = " + out.AwsSecretAccessKey + " \n")
 	token := []byte("aws_session_token = " + out.AwsSessionToken + " \n")
@@ -108,6 +108,7 @@ func writeCredToFile(i writeCredToFileInput) error {
             return i 
         }   
    
+    }
 }
 func searchAuthMethod(sep []oktalib.OktaUserAuthnFactor, s string) bool {
 	for _, i := range sep {
