@@ -98,7 +98,7 @@ func writeCredToFile(i* writeCredToFileInput) error {
      }  
      defer f.Close()
      _, err = f.Write(i.towrite)
-     if err {
+     if err != nil {
         panic(err) 
      }   
     return nil
