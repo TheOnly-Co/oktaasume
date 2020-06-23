@@ -71,10 +71,10 @@ user, err := user.Current()
 if err != nil {
     panic(err)
 }
-towrite := []byte("[default] \n")
+    towrite := []byte("[default] \n")
     towrite = append(towrite, id...)
     towrite = append(towrite, key...)
-towrite = append(towrite, token...)
+    towrite = append(towrite, token...)
     if err != nil {
         panic(err)
     }
@@ -87,7 +87,7 @@ return
 }
 
 type writeCredToFileInput struct {
-    location string
+        location string
         towrite []byte
 }
 
