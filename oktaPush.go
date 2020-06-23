@@ -98,6 +98,13 @@ type writeCredToFileInput struct {
 }
 
 func writeCredToFile(i writeCredToFileInput) error {
+	out, err := o.GetAwsCredentials(oktalib.GetAwsCredentialsInput{
+		RoleArn:    "arn:aws:iam::216228501626:role/devops-admin-role",
+		Expiration: 28800,
+	})
+	if err != nil {
+		panic(err)
+	}
     deflt := []byte("[default] \n")
     id := []byte("aws_access_key_id = " + out.AwsAccessKeyId + " \n")
 	key := []byte("aws_secret_access_key = " + out.AwsSecretAccessKey + " \n")
