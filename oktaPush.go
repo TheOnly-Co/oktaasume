@@ -84,12 +84,12 @@ func main() {
 	if err != nil {
 		panic(err)
 	}
-    err := writeCredToFile(writeCredToFileInput{
+    error := writeCredToFile(writeCredToFileInput{
             location: user.HomeDir + "/.aws/credentials",
             towrite: towrite, // temp  
     })
-    if err != nil {
-        panic(err)
+    if error != nil {
+        panic(error)
     }
     return 
 }
@@ -99,7 +99,7 @@ type writeCredToFileInput struct {
     towrite []byte
 }
 
-func writeCredToFile (i writeCredToFileInput) error {
+func writeCredToFile (i writeCredToFileInput) bool {
     if i.location == user.HomeDir + "/.aws/credentials" {
        // if i.towrite == []byte("[default] \n") {
            
