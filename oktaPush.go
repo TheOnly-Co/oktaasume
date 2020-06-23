@@ -71,10 +71,10 @@ user, err := user.Current()
 if err != nil {
     panic(err)
 }
-    towrite := []byte("[default] \n")
+towrite := []byte("[default] \n")
     towrite = append(towrite, id...)
     towrite = append(towrite, key...)
-    towrite = append(towrite, token...)
+towrite = append(towrite, token...)
     if err != nil {
         panic(err)
     }
@@ -88,19 +88,19 @@ return
 
 type writeCredToFileInput struct {
     location string
-    towrite []byte
+        towrite []byte
 }
 
 func writeCredToFile(i* writeCredToFileInput) error {
-     f, err := os.Create(i.location)
-     if err != nil {
-        return err
-     }  
-     defer f.Close()
-     _, err = f.Write(i.towrite)
-     if err != nil {
-        panic(err) 
-     }   
+    f, err := os.Create(i.location)
+        if err != nil {
+            return err
+        }  
+    defer f.Close()
+        _, err = f.Write(i.towrite)
+        if err != nil {
+            panic(err) 
+        }   
     return nil
 }
 
@@ -114,18 +114,18 @@ func searchAuthMethod(sep []oktalib.OktaUserAuthnFactor, s string) bool {
 }
 
 func getCredentials() (string, string, *cookiejar.Jar) {
-	currentUser := os.Getenv("USER")
-	userName, err := userprompt.UserPromptWithDefault("Enter Okta Username ("+currentUser+")", currentUser, false)
-	if err != nil {
-		panic(err)
-	}
-	pass, err := userprompt.UserPrompt("Enter Okta Password", true)
-	if err != nil {
-		panic(err)
-	}
-	cJar, err := cookiejar.New(nil)
-	if err != nil {
-		panic(err)
-	}
-	return userName, pass, cJar
+currentUser := os.Getenv("USER")
+                 userName, err := userprompt.UserPromptWithDefault("Enter Okta Username ("+currentUser+")", currentUser, false)
+                 if err != nil {
+                     panic(err)
+                 }
+             pass, err := userprompt.UserPrompt("Enter Okta Password", true)
+                 if err != nil {
+                     panic(err)
+                 }
+             cJar, err := cookiejar.New(nil)
+                 if err != nil {
+                     panic(err)
+                 }
+             return userName, pass, cJar
 }
