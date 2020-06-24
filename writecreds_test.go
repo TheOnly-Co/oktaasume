@@ -22,3 +22,7 @@ func TestWriteCreds (t *testing.T) {
         t.Errorf("The input is different than the output")
     }
 }
+
+func TestSearchAuthMethod (t *testing.T) {
+    
+}
