@@ -23,6 +23,14 @@ func TestWriteCreds (t *testing.T) {
     }
 }
 
+
 func TestSearchAuthMethod (t *testing.T) {
+  //  for the range of keys in []oktalib.OktaUserAuthnFactor 
+
+  // if the key's value equal to the string
+
+  // output true
+
+  // else false  
     
 }
