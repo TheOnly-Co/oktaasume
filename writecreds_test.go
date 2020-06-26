@@ -15,7 +15,7 @@ func TestWriteCreds (t *testing.T) {
         t.Error(err.Error())
     }
     f, err := ioutil.ReadFile("/tmp/hello")
-    if err != nil {
+    if err != nil{
         t.Error(err.Error())
     }
     if string(f) != string(mockWrite) {
@@ -23,14 +23,59 @@ func TestWriteCreds (t *testing.T) {
     }
 }
 
+type authTest struct {
+    str string
+    factor string
+}
+var authTests = []authTest {
+    authTest {
+     str: "hi",
+     factor: "hi",
+    },
+    authTest {
+     str: "hi",
+     factor: "hi",
+    },
+}
+
 
 func TestSearchAuthMethod (t *testing.T) {
-  //  for the range of keys in []oktalib.OktaUserAuthnFactor 
 
-  // if the key's value equal to the string
-
-  // output true
-
-  // else false  
-    
+    mockData ,err := searchAuthMethod(authTests,"hi")
+    if err != nil {
+    t.Error(err.Error())
+    } 
+    for _, i := range authTests{
+        if i.fator != "hi" {
+            t.Error("values do not match")
+        }
+    }    
+     
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
