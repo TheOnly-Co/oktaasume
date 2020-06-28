@@ -22,35 +22,37 @@ func TestWriteCreds (t *testing.T) {
         t.Errorf("The input is different than the output")
     }
 }
-
-type authTest struct {
-    str string
+type okta struct {
     factor string
 }
+type authTest struct {
+    str string
+    Objects []okta    
+}
+
 var authTests = []authTest {
     authTest {
      str: "hi",
-     factor: "hi",
-    },
-    authTest {
-     str: "hi",
-     factor: "hi",
+     Objects: []okta {
+            okta {
+                factor:"hi",
+            },
+        },
     },
 }
 
 
 func TestSearchAuthMethod (t *testing.T) {
 
-//    mockData ,err := searchAuthMethod(authTests,"hi")
-//    if err != nil {
-//    t.Error(err.Error())
-//    } 
-//    for _, i := range authTests{
-//        if i.fator != "hi" {
-//            t.Error("values do not match")
-//        }
-//    }    
-     
+    mockData ,err := searchAuthMethod([]authTest,"hi")
+    if err != nil {
+    t.Error(err.Error())
+    } 
+    for _, i := range authTests{
+       if i.fator != "hi" {
+            t.Error("values do not match")
+        }
+    }    
 }
 type AddRes struct {
     x int
@@ -68,8 +70,7 @@ func TestSum(t *testing.T) {
     if res != i.expected {
         t.Fatal("values do not match")
     }
-    }
- 
+  }
 }
 
 
