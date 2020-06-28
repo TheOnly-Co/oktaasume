@@ -6,4 +6,4 @@ jobs:
     steps:
         - checkout
         - run: ls
-        - run: go test -v ./..
+        - run: go test -v 
