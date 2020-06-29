@@ -57,7 +57,7 @@ func TestSearchAuthMethod (t *testing.T) {
 type AddRes struct {
     x int
     y int
-    expected  int
+    expected int
 }
 
 var AddRess = []AddRes{
