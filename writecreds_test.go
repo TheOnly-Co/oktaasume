@@ -54,15 +54,15 @@ func TestSearchAuthMethod (t *testing.T) {
 //            }
 //        }
 //  prototpye2
-      for _, i := range authTests {
-          mockData, err := searchAuthMethod(i.Objects,i.str)
-          if err != nil {
-              return err
-          }
-          if i.Objects.factor != i.str {
-              t.Error("Values do not match")
-          }
-      }        
+//       for _, i := range authTests {
+//           mockData, err := searchAuthMethod(i.Objects,i.str)
+//           if err != nil {
+//               return err
+//           }
+//           if i.Objects.factor != i.str {
+//               t.Error("Values do not match")
+//           }
+//       }        
 }
 type AddRes struct {
     x int
