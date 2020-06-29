@@ -41,18 +41,28 @@ var authTests = []authTest {
     },
 }
 
-
 func TestSearchAuthMethod (t *testing.T) {
 
-    mockData ,err := searchAuthMethod([]authTest,"hi")
-    if err != nil {
-    t.Error(err.Error())
-    } 
-    for _, i := range authTests{
-       if i.fator != "hi" {
-            t.Error("values do not match")
-        }
-    }    
+//         prototype1
+//         mockData ,err := searchAuthMethod([]authTests,  authTest.str)
+//       if err != nil {
+//        t.Error(err.Error())
+//        }
+//        for _, i := range authTests{
+//           if i.fator != "hi" {
+//                t.Error("values do not match")
+//            }
+//        }
+//  prototpye2
+      for _, i := range authTests {
+          mockData, err := searchAuthMethod(i.Objects,i.str)
+          if err != nil {
+              return err
+          }
+          if i.Objects.factor != i.str {
+              t.Error("Values do not match")
+          }
+      }        
 }
 type AddRes struct {
     x int
