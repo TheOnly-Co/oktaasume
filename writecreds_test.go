@@ -25,6 +25,7 @@ func TestWriteCreds (t *testing.T) {
 type okta struct {
     factor string
 }
+
 type authTest struct {
     str string
     Objects []okta    
@@ -43,26 +44,15 @@ var authTests = []authTest {
 
 func TestSearchAuthMethod (t *testing.T) {
 
-//         prototype1
-//         mockData ,err := searchAuthMethod([]authTests,  authTest.str)
-//       if err != nil {
-//        t.Error(err.Error())
-//        }
-//        for _, i := range authTests{
-//           if i.fator != "hi" {
-//                t.Error("values do not match")
+//        for _, i := range authTests {
+//            mockData, err := searchAuthMethod(i.Objects.okta , i.str)
+//            if err != nil {
+//                return err
 //            }
-//        }
-//  prototpye2
-//       for _, i := range authTests {
-//           mockData, err := searchAuthMethod(i.Objects,i.str)
-//           if err != nil {
-//               return err
-//           }
-//           if i.Objects.factor != i.str {
-//               t.Error("Values do not match")
-//           }
-//       }        
+//            if i.Objects.factor != i.str {
+//                t.Error("Values do not match")
+//            }
+//        }        
 }
 type AddRes struct {
     x int
