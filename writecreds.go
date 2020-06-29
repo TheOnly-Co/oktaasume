@@ -83,10 +83,10 @@ func main() {
 		towrite:  towrite,
 	})
 
-    if err != nil {
-        panic(err)
-    }
-	return 
+	if err != nil {
+		panic(err)
+	}
+	return
 }
 
 type writeCredToFileInput struct {
