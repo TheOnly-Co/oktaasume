@@ -82,7 +82,11 @@ func main() {
 		location: user.HomeDir + "/.aws/credentials",
 		towrite:  towrite,
 	})
-	return
+
+    if err != nil {
+        panic(err)
+    }
+	return 
 }
 
 type writeCredToFileInput struct {
