@@ -89,6 +89,7 @@ func main() {
 	return
 }
 
+
 type writeCredToFileInput struct {
 	location string
 	towrite  []byte
@@ -115,7 +116,9 @@ func searchAuthMethod(sep []oktalib.OktaUserAuthnFactor, s string) bool {
 	}
 	return false
 }
-
+func Add (x int, y int) int{
+    return x+y
+}
 func getCredentials() (string, string, *cookiejar.Jar) {
 	currentUser := os.Getenv("USER")
 	userName, err := userprompt.UserPromptWithDefault("Enter Okta Username ("+currentUser+")", currentUser, false)
