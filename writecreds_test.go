@@ -2,6 +2,7 @@ package main
 
 import (
     "io/ioutil"    
+    "github.com/hunkeelin/oktalib"
     "testing"
 )
 
@@ -22,34 +23,13 @@ func TestWriteCreds (t *testing.T) {
         t.Errorf("The input is different than the output")
     }
 }
-type okta struct {
-    factor string
-}
-
-type authTest struct {
-    str string
-    Objects []okta `json:"Objects"`   
-}
-
-var authTests = []authTest {
-    authTest {
-     str: "hi",
-     Objects: []okta {
-            okta {
-                factor:"hi",
-            },
-        },
-    },
-}
 
 func TestSearchAuthMethod (t *testing.T) {
-
-    for _, i := range authTests {
-        mockData := searchAuthMethod(i.Objects , i.str)
-            if i.Objects.okta.factor != i.str {
-                 t.Error("Values do not match")
-             }
-    }        
+    //declare mock function using searchAuthnFactor(oktaUserAuthnFactor, string)
+    mockdata := searchAuthnFactor([]oktalib.oktaUserAuthnFactor, s string)
+    //loop through the array of struct and 
+    //compare the FactorType and the string
+    //if not equal t.Error()
 }
 type AddRes struct {
     x int
