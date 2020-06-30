@@ -24,13 +24,19 @@ func TestWriteCreds (t *testing.T) {
     }
 }
 
-func TestSearchAuthMethod (t *testing.T) {
-    //declare mock function using searchAuthnFactor(oktaUserAuthnFactor, string)
-    mockdata := searchAuthnFactor([]oktalib.oktaUserAuthnFactor, s string)
-    //loop through the array of struct and 
-    //compare the FactorType and the string
-    //if not equal t.Error()
+func TestSearchAuthMethod(t *testing.T) {
+    var mockFactors []oktalib.OktaUserAuthnFactor
+    mockFactors = append(mockFactors, oktalib.OktaUserAuthnFactor{
+        FactorType: "foo",
+    })
+    if searchAuthMethod(mockFactors, "bar") {
+        t.Errorf("searchAuthMethod return true when two values are not the same")
+    }
+    if !searchAuthMethod(mockFactors, "foo") {
+        t.Errorf("searchAuthMethod return false when the two values are the same")
+    }
 }
+
 type AddRes struct {
     x int
     y int
@@ -40,6 +46,7 @@ type AddRes struct {
 var AddRess = []AddRes{
     {1,1,2},
 }
+
 func TestSum(t *testing.T) {
     for _, i := range AddRess{
     res := Add(i.x,i.y)
