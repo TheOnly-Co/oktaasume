@@ -28,7 +28,7 @@ type okta struct {
 
 type authTest struct {
     str string
-    Objects []okta    
+    Objects []okta `json:"Objects"`   
 }
 
 var authTests = []authTest {
@@ -44,15 +44,12 @@ var authTests = []authTest {
 
 func TestSearchAuthMethod (t *testing.T) {
 
-//        for _, i := range authTests {
-//            mockData, err := searchAuthMethod(i.Objects.okta , i.str)
-//            if err != nil {
-//                return err
-//            }
-//            if i.Objects.factor != i.str {
-//                t.Error("Values do not match")
-//            }
-//        }        
+    for _, i := range authTests {
+        mockData := searchAuthMethod(i.Objects , i.str)
+            if i.Objects.okta.factor != i.str {
+                 t.Error("Values do not match")
+             }
+    }        
 }
 type AddRes struct {
     x int
