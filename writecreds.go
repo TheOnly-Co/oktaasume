@@ -114,6 +114,7 @@ func searchAuthMethod(sep []oktalib.OktaUserAuthnFactor, s string) bool {
         }
     }
     return false
+
 }
 
 func getCredentials() (string, string, *cookiejar.Jar) {

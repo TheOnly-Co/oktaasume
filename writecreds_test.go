@@ -62,6 +62,3 @@ func TestSearchAuthMethod(t *testing.T) {
 
 
 
-
-
-
