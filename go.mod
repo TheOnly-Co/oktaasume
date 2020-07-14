@@ -11,4 +11,5 @@ require (
 	github.com/hunkeelin/userprompt v0.0.0-20200526032403-6769dffdbe78
 	github.com/prometheus/client_golang v1.7.1 // indirect
 	golang.org/x/tools v0.0.0-20200626171337-aa94e735be7f // indirect
+
 )

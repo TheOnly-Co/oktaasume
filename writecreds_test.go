@@ -25,7 +25,6 @@ func TestWriteCreds (t *testing.T) {
     }
 }
 
-
 func TestSearchAuthMethod(t *testing.T) {
     var mockFactors []oktalib.OktaUserAuthnFactor
     mockFactors = append(mockFactors, oktalib.OktaUserAuthnFactor{
