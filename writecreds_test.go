@@ -25,7 +25,6 @@ func TestWriteCreds (t *testing.T) {
     }
 }
 
-
 func TestSearchAuthMethod(t *testing.T) {
     var mockFactors []oktalib.OktaUserAuthnFactor
     mockFactors = append(mockFactors, oktalib.OktaUserAuthnFactor{
@@ -39,25 +38,8 @@ func TestSearchAuthMethod(t *testing.T) {
     }
 }
 
-type AddRes struct {
-    x int
-    y int
-    expected int
-}
 
-var AddRess = []AddRes{
-    {1,1,2},
-}
 
-func TestSum(t *testing.T) {
-    for _, i := range AddRess{
-    res := Add(i.x,i.y)
-
-    if res != i.expected {
-        t.Fatal("values do not match")
-    }
-  }
-}
 
 
 
