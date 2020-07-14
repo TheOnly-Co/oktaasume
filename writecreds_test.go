@@ -1,6 +1,7 @@
-package main 
+package main
 
 import (
+
     "io/ioutil"    
     "github.com/hunkeelin/oktalib"
     "testing"
@@ -23,6 +24,7 @@ func TestWriteCreds (t *testing.T) {
         t.Errorf("The input is different than the output")
     }
 }
+
 
 func TestSearchAuthMethod(t *testing.T) {
     var mockFactors []oktalib.OktaUserAuthnFactor
