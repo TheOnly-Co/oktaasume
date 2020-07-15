@@ -8,4 +8,4 @@
 [![GoDoc](https://godoc.org/github.com/TheOnly-Co/oktaasume?status.svg)](https://godoc.org/github.com/TheOnly-Co/oktaasume)
 
 * Access AWS Elastic Kubernetes Service with OKTA authentication 
-* Perform Go-lang unit testing
+* Perform go-lang unit testing
