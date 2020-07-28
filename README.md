@@ -7,5 +7,11 @@
 
 [![GoDoc](https://godoc.org/github.com/TheOnly-Co/oktaasume?status.svg)](https://godoc.org/github.com/TheOnly-Co/oktaasume)
 
-* Access AWS Elastic Kubernetes Service with OKTA authentication 
-* Perform go-lang unit testing
+## Purpose
+
+Establish authentication between AWS and OKTA 
+
+* Elastic Kubernetes Service autheticated with aws credentials
+* Set up Okta login functionality in the terminal/cmd
+* Automatically update session token every time user login in 
+* Perform go-lang unit testing 
