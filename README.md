@@ -14,4 +14,4 @@ Establish authentication between AWS and OKTA
 * Elastic Kubernetes Service autheticated with aws credentials
 * Set up Okta login functionality in the terminal/cmd
 * Automatically update session token every time user login in 
-* Perform go-lang unit testing 
+* Perform unit testing with GO 

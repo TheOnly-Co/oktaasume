@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: busybox1
+spec:
+  containers:
+  - name: busybox1
+    image: 0857/aws_go_node:latest_v
+    command:
+      - sleep
+      - "28800"
+    imagePullPolicy: Always
