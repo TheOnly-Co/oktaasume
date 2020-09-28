@@ -22,8 +22,6 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  annotations:
-    service.beta.kubernetes.io/aws-load-balancer-internal: "true"
   name: nginx-dev-svc
   labels:
     app: nginx
