@@ -22,13 +22,16 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
+  annotations:
+    service.beta.kubernetes.io/aws-load-balancer-internal: "true"
   name: nginx-dev-svc
   labels:
     app: nginx
 spec:
-  type: NodePort
+  type: NodePort 
   ports:
   - port: 80
-    nodePort: 30025
+    targetPort: 80
+    nodePort: 30225
   selector:
     app: nginx
