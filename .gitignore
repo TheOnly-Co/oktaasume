@@ -1,0 +1,4 @@
+grafana:
+
+user: admin
+pass: prom-operator
